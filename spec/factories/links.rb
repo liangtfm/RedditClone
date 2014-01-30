@@ -2,5 +2,12 @@
 
 FactoryGirl.define do
   factory :link do
+    title do
+      Faker::Name.name
+    end
+    url do
+      Faker::Internet.domain_name
+    end
+    user_id 1
   end
 end

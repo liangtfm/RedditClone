@@ -13,7 +13,15 @@ describe Sub do
       sub = FactoryGirl.build(:sub, name: "WTF", user_id: bob.id)
       expect(sub.moderator).to eq(bob)
     end
+  end
 
+  it "has many links" do
+    sub = FactoryGirl.create(:sub)
+    link = FactoryGirl.create(:link)
+
+    link.subs << sub
+
+    sub.links.first.should be_instance_of(Link)
   end
 
 end
