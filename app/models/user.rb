@@ -5,6 +5,16 @@ class User < ActiveRecord::Base
   validates :username, :password_digest, presence: true
   validates :username, uniqueness: true
 
+  has_many :subs,
+  class_name: "Sub",
+  foreign_key: :user_id,
+  primary_key: :id
+
+  has_many :links,
+  class_name: "Link",
+  foreign_key: :user_id,
+  primary_key: :id
+
 
   def self.find_by_credentials(username, password)
     @user = User.find_by_username(username)
